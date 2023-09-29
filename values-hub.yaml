@@ -15,13 +15,12 @@ clusterGroup:
       path: charts/all/hello-world
       extraValueFiles:
       # Possible expansions:
-      #  appName, clusterGroup, platform, ocpVersion, clusterShortName
+      #  .appName, .clusterGroup, .platform, .ocpVersion, .clusterShortName
       # Combine them in any way you like
-      # Ideally we wouldn't need '.Values.global.'
       #
       # Eventually remove all the implicit ones from clustergroup/templates/_helpers.tpl
       - /myWonderfulValues.yaml
-      - /values/{{ .Values.global.appName }}/values.yaml
-      - /values/{{ .Values.global.appName }}/{{ .Values.global.platform }}.yaml
-      - /values/{{ .Values.global.appName }}-{{ .Values.global.platform }}-{{ .Values.global.ocpVersion }/{{clusterGroup}}.yaml
+      - /values/{{ .appName }}/values.yaml
+      - /values/{{ .appName }}/{{ .platform }}.yaml
+      - /values/{{ .appName }}-{{ .platform }}-{{ .ocpVersion }/{{ .clusterGroup }}.yaml
 

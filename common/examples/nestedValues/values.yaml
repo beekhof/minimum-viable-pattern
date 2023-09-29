@@ -8,7 +8,13 @@ global:
   ocpVersion: "4.12"
   clusterGroup: "hub"
   platform: "aws"
+  # Hack to avoid requiring a .Values.global prefix
+  # See https://github.com/helm/helm/issues/5979
+  Template:
+    BasePath: "global-vars.yml"
+    Name: "global-vars"
 
 someList:
-- "{{ .Values.global.ocpVersion }}/apiThree/v7"
-- "{{ .Values.global.ocpVersion }}/{{ .Values.global.clusterGroup }}/v7"
+- "{{ .ocpVersion }}/apiThree/v7"
+- "{{ .ocpVersion }}/{{ .clusterGroup }}/v7"
+- "{{ .apiOneUrl }}/{{ .clusterGroup }}/v7"

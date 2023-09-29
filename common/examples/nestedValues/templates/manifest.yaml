@@ -4,6 +4,6 @@ metadata:
   name: my-configmap
 data:
   files:
-    {{- range .Values.someList }}
-    a: {{ tpl . $ }}
-    {{- end }}
+  {{- range $valueFile := .Values.someList }}
+  - {{ tpl $valueFile $.Values.global }}
+  {{- end }}
