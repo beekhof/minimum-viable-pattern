@@ -1,0 +1,14 @@
+
+baseUrl: http://example.com
+apiOneUrl: "{{ .Values.baseUrl }}/apiOne/v0"
+apiTwoUrl: "{{ .Values.baseUrl }}/apiTwo/v3"
+apiThreeUrl: "{{ .Values.baseUrl }}/apiThree/v7"
+
+global:
+  ocpVersion: "4.12"
+  clusterGroup: "hub"
+  platform: "aws"
+
+someList:
+- "{{ .Values.global.ocpVersion }}/apiThree/v7"
+- "{{ .Values.global.ocpVersion }}/{{ .Values.global.clusterGroup }}/v7"
